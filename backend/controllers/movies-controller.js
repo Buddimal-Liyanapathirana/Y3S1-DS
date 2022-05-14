@@ -9,7 +9,7 @@ const getAllMovies = async (req, res, next) => {
   }
 
   if (!movies) {
-    return res.status(404).json({ message: "No products found" });
+    return res.status(404).json({ message: "Not found" });
   }
   return res.status(200).json({ movies });
 };
@@ -23,7 +23,7 @@ const getById = async (req, res, next) => {
     console.log(err);
   }
   if (!movie) {
-    return res.status(404).json({ message: "No Movie found" });
+    return res.status(404).json({ message: "Resource not found" });
   }
   return res.status(200).json({ movie });
 };
@@ -46,7 +46,7 @@ const addMovie = async (req, res, next) => {
   }
 
   if (!movie) {
-    return res.status(500).json({ message: "Unable To Add" });
+    return res.status(500).json({ message: "Failed to Add" });
   }
   return res.status(201).json({ movie });
 };
@@ -69,7 +69,7 @@ const updateMovie = async (req, res, next) => {
     console.log(err);
   }
   if (!movie) {
-    return res.status(404).json({ message: "Unable To Update By this ID" });
+    return res.status(404).json({ message: "Failed to update " });
   }
   return res.status(200).json({ movie });
 };
@@ -83,9 +83,9 @@ const deleteMovie = async (req, res, next) => {
     console.log(err);
   }
   if (!movie) {
-    return res.status(404).json({ message: "Unable To Delete By this ID" });
+    return res.status(404).json({ message: "Failed To Delete" });
   }
-  return res.status(200).json({ message: "Product Successfully Deleted" });
+  return res.status(200).json({ message: "Success" });
 };
 
 exports.getAllMovies = getAllMovies;

@@ -15,6 +15,7 @@ const MovieDetail = () => {
   const id = useParams().id;
   const [checked, setChecked] = useState(false);
   const history = useNavigate();
+
   useEffect(() => {
     const fetchHandler = async () => {
       await axios
@@ -37,10 +38,12 @@ const MovieDetail = () => {
       })
       .then((res) => res.data);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     sendRequest().then(() => history("/movies"));
   };
+
   const handleChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,
