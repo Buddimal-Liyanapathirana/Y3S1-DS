@@ -29,12 +29,12 @@ const getById = async (req, res, next) => {
 };
 
 const addMovie = async (req, res, next) => {
-  const { name, author, description, price, available, image } = req.body;
+  const { name, director, description, price, available, image } = req.body;
   let movie;
   try {
     movie = new Movie({
       name,
-      author,
+      director,
       description,
       price,
       available,
@@ -53,12 +53,12 @@ const addMovie = async (req, res, next) => {
 
 const updateMovie = async (req, res, next) => {
   const id = req.params.id;
-  const { name, author, description, price, available, image } = req.body;
+  const { name, director, description, price, available, image } = req.body;
   let movie;
   try {
     movie = await Movie.findByIdAndUpdate(id, {
       name,
-      author,
+      director,
       description,
       price,
       available,

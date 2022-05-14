@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Movie.css";
 const Movie = (props) => {
   const history = useNavigate();
-  const { _id, name, author, description, price, image } = props.movie;
+  const { _id, name, director, description, price, image } = props.movie;
   const deleteHandler = async () => {
     await axios
       .delete(`http://localhost:5000/movies/${_id}`)
@@ -16,7 +16,7 @@ const Movie = (props) => {
   return (
     <div className="card">
       <img src={image} alt={name} />
-      <article>By {author}</article>
+      <article>By {director}</article>
       <h3>{name}</h3>
       <p>{description}</p>
       <h3>Rs {price}</h3>

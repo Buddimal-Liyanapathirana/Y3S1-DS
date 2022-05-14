@@ -17,7 +17,7 @@ const AddMovie = () => {
     name: "",
     description: "",
     price: "",
-    author: "",
+    director: "",
 
     image: "",
   });
@@ -34,7 +34,7 @@ const AddMovie = () => {
     await axios
       .post("http://localhost:5000/movies", {
         name: String(inputs.name),
-        author: String(inputs.author),
+        director: String(inputs.director),
         description: String(inputs.description),
         price: Number(inputs.price),
         image: String(inputs.image),
@@ -71,14 +71,14 @@ const AddMovie = () => {
           variant="outlined"
           name="name"
         />
-        <FormLabel>Author</FormLabel>
+        <FormLabel>Director</FormLabel>
         <TextField
-          value={inputs.author}
+          value={inputs.director}
           onChange={handleChange}
           margin="normal"
           fullWidth
           variant="outlined"
-          name="author"
+          name="director"
         />
         <FormLabel>Description</FormLabel>
         <TextField
