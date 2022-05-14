@@ -2,9 +2,13 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./Movie.css";
+// import { useCart } from "react-use-cart";
+
 const Movie = (props) => {
   const history = useNavigate();
   const { _id, name, director, description, price, image } = props.movie;
+  const handleCart = props.handleCart;
+
   const deleteHandler = async () => {
     await axios
       .delete(`http://localhost:5000/movies/${_id}`)
@@ -25,6 +29,13 @@ const Movie = (props) => {
       </Button>
       <Button color="error" onClick={deleteHandler} sx={{ mt: "auto" }}>
         Delete
+      </Button>
+      <Button
+        color="error"
+        onClick={() => handleCart(props.movie)}
+        sx={{ mt: "auto" }}
+      >
+        Book
       </Button>
     </div>
   );

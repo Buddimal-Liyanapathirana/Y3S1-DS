@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./Movie.css";
 import axios from "axios";
+import "./Movie.css";
 import Movie from "./Movie";
 
 const URL = "http://localhost:5000/movies";
@@ -15,7 +15,9 @@ const Movies = () => {
     return await axios.get(URL).then((res) => res.data);
   };
 
-  console.log(movies);
+  const handleCart = (movie) => {
+    alert(movie.name);
+  };
 
   return (
     <div>
@@ -23,7 +25,7 @@ const Movies = () => {
         {movies &&
           movies.map((movie, i) => (
             <li key={i}>
-              <Movie movie={movie} />
+              <Movie movie={movie} handleCart={handleCart} />
             </li>
           ))}
       </ul>
