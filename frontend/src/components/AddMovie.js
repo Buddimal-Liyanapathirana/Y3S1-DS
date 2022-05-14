@@ -11,7 +11,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const AddBook = () => {
+const AddMovie = () => {
   const history = useNavigate();
   const [inputs, setInputs] = useState({
     name: "",
@@ -32,7 +32,7 @@ const AddBook = () => {
 
   const sendRequest = async () => {
     await axios
-      .post("http://localhost:5000/books", {
+      .post("http://localhost:5000/movies", {
         name: String(inputs.name),
         author: String(inputs.author),
         description: String(inputs.description),
@@ -46,7 +46,7 @@ const AddBook = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs, checked);
-    sendRequest().then(() => history("/books"));
+    sendRequest().then(() => history("/movies"));
   };
 
   return (
@@ -116,11 +116,11 @@ const AddBook = () => {
         />
 
         <Button variant="contained" type="submit">
-          Add Book
+          Add Movie
         </Button>
       </Box>
     </form>
   );
 };
 
-export default AddBook;
+export default AddMovie;

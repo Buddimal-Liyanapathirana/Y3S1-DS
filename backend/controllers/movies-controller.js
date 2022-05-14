@@ -1,38 +1,38 @@
-const Book = require("../model/Book");
+const Movie = require("../model/Movie");
 
-const getAllBooks = async (req, res, next) => {
-  let books;
+const getAllMovies = async (req, res, next) => {
+  let movies;
   try {
-    books = await Book.find();
+    movies = await Movie.find();
   } catch (err) {
     console.log(err);
   }
 
-  if (!books) {
+  if (!movies) {
     return res.status(404).json({ message: "No products found" });
   }
-  return res.status(200).json({ books });
+  return res.status(200).json({ movies });
 };
 
 const getById = async (req, res, next) => {
   const id = req.params.id;
-  let book;
+  let movie;
   try {
-    book = await Book.findById(id);
+    movie = await Movie.findById(id);
   } catch (err) {
     console.log(err);
   }
-  if (!book) {
-    return res.status(404).json({ message: "No Book found" });
+  if (!movie) {
+    return res.status(404).json({ message: "No Movie found" });
   }
-  return res.status(200).json({ book });
+  return res.status(200).json({ movie });
 };
 
-const addBook = async (req, res, next) => {
+const addMovie = async (req, res, next) => {
   const { name, author, description, price, available, image } = req.body;
-  let book;
+  let movie;
   try {
-    book = new Book({
+    movie = new Movie({
       name,
       author,
       description,
@@ -40,23 +40,23 @@ const addBook = async (req, res, next) => {
       available,
       image,
     });
-    await book.save();
+    await movie.save();
   } catch (err) {
     console.log(err);
   }
 
-  if (!book) {
+  if (!movie) {
     return res.status(500).json({ message: "Unable To Add" });
   }
-  return res.status(201).json({ book });
+  return res.status(201).json({ movie });
 };
 
-const updateBook = async (req, res, next) => {
+const updateMovie = async (req, res, next) => {
   const id = req.params.id;
   const { name, author, description, price, available, image } = req.body;
-  let book;
+  let movie;
   try {
-    book = await Book.findByIdAndUpdate(id, {
+    movie = await Movie.findByIdAndUpdate(id, {
       name,
       author,
       description,
@@ -64,32 +64,32 @@ const updateBook = async (req, res, next) => {
       available,
       image,
     });
-    book = await book.save();
+    movie = await movie.save();
   } catch (err) {
     console.log(err);
   }
-  if (!book) {
+  if (!movie) {
     return res.status(404).json({ message: "Unable To Update By this ID" });
   }
-  return res.status(200).json({ book });
+  return res.status(200).json({ movie });
 };
 
-const deleteBook = async (req, res, next) => {
+const deleteMovie = async (req, res, next) => {
   const id = req.params.id;
-  let book;
+  let movie;
   try {
-    book = await Book.findByIdAndRemove(id);
+    movie = await Movie.findByIdAndRemove(id);
   } catch (err) {
     console.log(err);
   }
-  if (!book) {
+  if (!movie) {
     return res.status(404).json({ message: "Unable To Delete By this ID" });
   }
   return res.status(200).json({ message: "Product Successfully Deleted" });
 };
 
-exports.getAllBooks = getAllBooks;
-exports.addBook = addBook;
+exports.getAllMovies = getAllMovies;
+exports.addMovie = addMovie;
 exports.getById = getById;
-exports.updateBook = updateBook;
-exports.deleteBook = deleteBook;
+exports.updateMovie = updateMovie;
+exports.deleteMovie = deleteMovie;

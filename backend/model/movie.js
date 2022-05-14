@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const bookSchema = new Schema({
+const movieSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -28,6 +28,6 @@ const bookSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("Book", bookSchema);
+module.exports = mongoose.model("Movie", movieSchema);
 
-// books
+// movies

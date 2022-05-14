@@ -10,7 +10,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const BookDetail = () => {
+const MovieDetail = () => {
   const [inputs, setInputs] = useState();
   const id = useParams().id;
   const [checked, setChecked] = useState(false);
@@ -18,16 +18,16 @@ const BookDetail = () => {
   useEffect(() => {
     const fetchHandler = async () => {
       await axios
-        .get(`http://localhost:5000/books/${id}`)
+        .get(`http://localhost:5000/movies/${id}`)
         .then((res) => res.data)
-        .then((data) => setInputs(data.book));
+        .then((data) => setInputs(data.movie));
     };
     fetchHandler();
   }, [id]);
 
   const sendRequest = async () => {
     await axios
-      .put(`http://localhost:5000/books/${id}`, {
+      .put(`http://localhost:5000/movies/${id}`, {
         name: String(inputs.name),
         author: String(inputs.author),
         description: String(inputs.description),
@@ -39,7 +39,7 @@ const BookDetail = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendRequest().then(() => history("/books"));
+    sendRequest().then(() => history("/movies"));
   };
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -120,7 +120,7 @@ const BookDetail = () => {
             />
 
             <Button variant="contained" type="submit">
-              Update Book
+              Update Movie
             </Button>
           </Box>
         </form>
@@ -129,4 +129,4 @@ const BookDetail = () => {
   );
 };
 
-export default BookDetail;
+export default MovieDetail;
