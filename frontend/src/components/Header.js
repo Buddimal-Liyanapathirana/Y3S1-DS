@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import { AppBar, Tab, Tabs, Toolbar, Typography } from "@mui/material";
 import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined";
+import MovieFilterIcon from "@mui/icons-material/MovieFilter";
 import { NavLink } from "react-router-dom";
 const Header = () => {
   const [value, setValue] = useState();
   return (
     <div>
-      <AppBar sx={{ backgroundColor: "#232F3D" }} position="sticky">
+      <AppBar sx={{ backgroundColor: "#229954 " }} position="sticky">
         <Toolbar>
           <NavLink to="/" style={{ color: "white" }}>
             <Typography>
-              <LibraryBooksOutlinedIcon />
+              <MovieFilterIcon />
             </Typography>
           </NavLink>
           <Tabs
-            sx={{ ml: "auto" }}
+            sx={{ ml: "1/0px" }}
             textColor="inherit"
             indicatorColor="primary"
             value={value}
