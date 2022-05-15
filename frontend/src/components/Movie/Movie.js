@@ -35,7 +35,7 @@ const Movie = (props) => {
         onClick={() => handleCart(props.movie)}
         sx={{ mt: "auto" }}
       >
-        Book
+        Book Tickets
       </Button>
     </div>
   );
